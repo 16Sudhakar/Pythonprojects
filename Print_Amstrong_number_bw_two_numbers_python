@@ -1,0 +1,12 @@
+lower = int(input())
+higher= int(input())
+for num in range(lower,higher+1):
+    sum=0
+    length= len(str(num))
+    for digi in str(num):
+        c= int(digi)**length
+        sum += c
+    if sum==num:
+        print(num)
+    else:
+        pass
