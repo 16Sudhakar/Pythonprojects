@@ -1,0 +1,51 @@
+# This python program is to find the greatest sum of unique combination of list integer values 
+# (even single digit of a number should not be repeated in the combination) 
+
+base = solidinput()
+l= len(base)
+outlist= [[] for x in range(l)]
+for y in range(l):
+    outlist[y].append(base[y])
+for num in base:
+    base = solidinput()
+    pos = base.index(num)
+    subbase = base
+    subbase.pop(pos)
+    
+    for nums in subbase:        
+        instring = convert(outlist[pos])
+        stnum = str(nums)
+        for string in stnum:
+            if string in instring:
+                break
+                
+        else:
+            outlist[pos].append(int(stnum))
+#print(outlist)
+for x in outlist:
+    x.sort()
+temp = set(frozenset(x) for x in outlist)
+output = [list(x) for x in temp]
+#print(output)
+dict ={}
+
+for x in output:
+    z= sum(x)
+    dict[z] = x
+#print(dict)
+
+# main program
+
+maxi = max(dict.keys())
+print(dict[maxi])
+
+#function
+def convert(s):
+    new = ""
+    for x in s: 
+        new += str(x)  
+    return new 
+
+def solidinput():
+    liste = [22,32,44,57,75,79,95,103]
+    return liste
